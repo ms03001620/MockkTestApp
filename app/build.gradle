@@ -6,10 +6,11 @@ plugins {
 apply from: '../jacoco.gradle'
 
 jacoco {
-    println("getToolVersion :${getToolVersion()}")// getToolVersion :0.8.6
+    setToolVersion("0.8.7")
+    println("getToolVersion :${getToolVersion()}")// getToolVersion :0.8.7
 }
 
-task jacocoTestReport1(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+task jacocoTestReport1(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
     reports {
         xml.enabled = true
         html.enabled = true
@@ -21,16 +22,16 @@ task jacocoTestReport1(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'cre
             dir: "${buildDir}/intermediates/javac/debug/classes/com/example/mockktestapp",
             excludes: excludes)
     def kotlinDebugTree = fileTree(
-            dir: "${buildDir}/tmp/kotlin-classes/debug/com/example/mockktestapp",
+            dir: "${buildDir}/tmp/kotlin-classes/debugUnitTest/com/example/mockktestapp",
             excludes: excludes)
 
     def mainSrc = "${project.projectDir}/src/main/java"
-    def exeDir = "${buildDir}/outputs/code_coverage/debugAndroidTest/connected/Pixel_3a_API_29(AVD) - 10-coverage.ec"
-    //def exeDir1 = "${buildDir}/outputs/unit_test_code_coverage/debugUnitTest/connected/testDebugUnitTest.exec"
+    def exeDir = "${buildDir}/outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec"
 
     println(debugTree.dir)
     println(kotlinDebugTree.dir)
     println(mainSrc)
+    println(exeDir)
 
     getClassDirectories().from = files(
             [debugTree], [kotlinDebugTree]
