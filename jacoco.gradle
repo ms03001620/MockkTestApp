@@ -1,0 +1,10 @@
+apply plugin: 'jacoco'
+
+//https://www.tpisoftware.com/tpu/articleDetails/2374
+//https://www.jianshu.com/p/671fad23c2ce
+
+/*
+jacoco {
+    // See https://github.com/jacoco/jacoco/releases
+    toolVersion = '0.8.7'
+}*/
