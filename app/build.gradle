@@ -5,45 +5,6 @@ plugins {
 
 apply from: '../jacoco.gradle'
 
-jacoco {
-    setToolVersion("0.8.7")
-    println("getToolVersion :${getToolVersion()}")// getToolVersion :0.8.7
-}
-
-task jacocoTestReport1(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-
-    def excludes = ['**/R.class']
-
-    def debugTree = fileTree(
-            dir: "${buildDir}/intermediates/javac/debug/classes/com/example/mockktestapp",
-            excludes: excludes)
-    def kotlinDebugTree = fileTree(
-            dir: "${buildDir}/tmp/kotlin-classes/debugUnitTest/com/example/mockktestapp",
-            excludes: excludes)
-
-    def mainSrc = "${project.projectDir}/src/main/java"
-    def exeDir = "${buildDir}/outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec"
-
-    println(debugTree.dir)
-    println(kotlinDebugTree.dir)
-    println(mainSrc)
-    println(exeDir)
-
-    getClassDirectories().from = files(
-            [debugTree], [kotlinDebugTree]
-    )
-    getSourceDirectories().from = files(
-            [mainSrc]
-    )
-    getExecutionData().from = files(
-            exeDir
-    )
-}
-
 android {
     compileSdk 30
 
