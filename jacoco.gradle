@@ -5,6 +5,10 @@ jacoco {
     println("getToolVersion :${getToolVersion()}")// getToolVersion :0.8.7
 }
 
+/**
+ * 生成针对JunitTest并生成Jacoco覆盖率报告
+ * 支持Java和Kotlin代码
+ */
 task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
     reports {
         xml.enabled = true
