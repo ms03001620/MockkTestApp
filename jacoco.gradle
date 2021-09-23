@@ -15,13 +15,13 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
         html.enabled = true
     }
 
-    def excludes = ['**/R.class']
+    def excludes = ['**/R.class', '**/BuildConfig.*']
 
     def debugTree = fileTree(
-            dir: "${buildDir}/intermediates/javac/debug/classes/com/example/mockktestapp",
+            dir: "${buildDir}/intermediates/javac/debug/classes",
             excludes: excludes)
     def kotlinDebugTree = fileTree(
-            dir: "${buildDir}/tmp/kotlin-classes/debugUnitTest/com/example/mockktestapp",
+            dir: "${buildDir}/tmp/kotlin-classes/debug",
             excludes: excludes)
 
     def mainSrc = "${project.projectDir}/src/main/java"
