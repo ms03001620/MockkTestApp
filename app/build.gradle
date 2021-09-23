@@ -6,7 +6,7 @@ plugins {
 apply from: '../jacoco.gradle'
 
 jacoco {
-    println("getToolVersion :${getToolVersion()}")
+    println("getToolVersion :${getToolVersion()}")// getToolVersion :0.8.6
 }
 
 task jacocoTestReport1(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
