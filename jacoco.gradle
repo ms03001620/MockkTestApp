@@ -15,7 +15,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
         html.enabled = true
     }
 
-    def excludes = ['**/R.class', '**/BuildConfig.*']
+    def excludes = ['**/R.class', '**/BuildConfig.*', "**/DataBinderMapperImpl.*"]
 
     def debugTree = fileTree(
             dir: "${buildDir}/intermediates/javac/debug/classes",
